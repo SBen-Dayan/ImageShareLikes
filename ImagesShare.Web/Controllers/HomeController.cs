@@ -43,12 +43,12 @@ namespace ImagesShare.Web.Controllers
         {
             var imageRepo = new ImageRepository(_connectionString);
 
-            var imagePath = imageFile.UploadImage("uploads", _webHostEnvironment.WebRootPath);
+            var fileName = imageFile.UploadImage("uploads", _webHostEnvironment.WebRootPath);
             imageRepo.InsertImage(new()
             {
                 Title = title,
                 DateUploaded = DateTime.Now,
-                FileName = imagePath
+                FileName = fileName
             });
             return Redirect("/");
         }
