@@ -1,0 +1,27 @@
+﻿@model ImageViewModel
+@{
+    ViewData["Title"] = Model.Image.Title;
+}
+
+<div class="row">
+    <div class="col-md-10 offset-md-1 bg-light p-4 rounded shadow">
+        <h1>@Model.Image.Title</h1>
+        <img data-image-id="@Model.Image.Id" src="/uploads/@Model.Image.FileName" style="width: 900px;" />
+        <br />
+        <br />
+        @if (Model.UserHasLiked)
+        {
+            <button class="btn btn-primary btn-lg" disabled>LIKE</button>
+        }
+        else
+        {
+            <button class="btn btn-primary btn-lg">LIKE</button>
+        }
+        Current Likes: <span id="likes-count">@Model.Image.Likes</span>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/js/view_image.js"></script>
+}
+
